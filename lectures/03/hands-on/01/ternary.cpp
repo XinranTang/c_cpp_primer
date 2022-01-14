@@ -11,6 +11,7 @@ int main(int argc, char* argv[])
     } else {
         a = -10; // statement 3
     }
+    a = argc > 0 ? 10 : -10;
     // What is the benefit of writing this in a single statement?
     return 0;
 }
