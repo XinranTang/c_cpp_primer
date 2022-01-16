@@ -12,9 +12,14 @@ public:
         }
     }
 
-    Foo(const Foo &c) {}
+    Foo(const Foo &c) = delete; // force disable copy constructor for this example
 
-    Foo operator=(const Foo &c)
+    // it is wrong to call the copy constructor to create a return object for
+    // the copy assignment operator.  We must return a reference to the instance
+    // instead.  Only this allows for operator chaining like we do in line 45
+    // below.
+
+    Foo &operator=(const Foo &c)
     {
         if (&c == this) {
             return *this;
